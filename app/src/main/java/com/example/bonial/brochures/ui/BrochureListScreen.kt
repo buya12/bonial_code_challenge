@@ -62,6 +62,13 @@ import coil.ImageLoader
 import com.example.bonial.R
 import com.example.bonial.brochures.ui.components.BrochureListFilter
 import com.example.bonial.brochures.ui.components.rememberBrochureListImageLoader
+import com.example.bonial.core.TestTags.BROCHURE_BROKEN_IMAGE
+import com.example.bonial.core.TestTags.BROCHURE_GRID
+import com.example.bonial.core.TestTags.BROCHURE_ITEM
+import com.example.bonial.core.TestTags.BROCHURE_LIST_EMPTY
+import com.example.bonial.core.TestTags.BROCHURE_LIST_ERROR
+import com.example.bonial.core.TestTags.BROCHURE_LIST_FILTER_BUTTON
+import com.example.bonial.core.TestTags.BROCHURE_LIST_LOADING
 import com.skydoves.landscapist.ImageOptions
 import com.skydoves.landscapist.coil.CoilImage
 import com.skydoves.landscapist.coil.LocalCoilImageLoader
@@ -130,13 +137,13 @@ internal fun BrochureListScreen(
         when {
             state.loading -> BrochureListLoading(
                 modifier = Modifier
-                    .testTag("loading")
+                    .testTag(BROCHURE_LIST_LOADING)
                     .fillMaxSize()
                     .padding(innerPadding)
             )
             state.error -> BrochureListError(
                 modifier = Modifier
-                    .testTag("error")
+                    .testTag(BROCHURE_LIST_ERROR)
                     .fillMaxSize()
                     .padding(innerPadding),
             )
@@ -189,7 +196,7 @@ private fun BrochureListTopBar(
 
         IconButton(
             modifier = Modifier
-                .testTag("filter_button")
+                .testTag(BROCHURE_LIST_FILTER_BUTTON)
                 .padding(end = 10.dp),
             onClick = onFilterClicked
         ) {
@@ -215,7 +222,7 @@ private fun BrochureContent(
     when {
         brochures.isEmpty() -> BrochureListEmpty(
             modifier = modifier
-                .testTag("empty")
+                .testTag(BROCHURE_LIST_EMPTY)
                 .fillMaxSize()
                 .padding(innerPadding)
         )
@@ -242,7 +249,7 @@ private fun BrochureList(
 ) {
     LazyVerticalGrid(
         modifier = modifier
-            .testTag("brochure_grid")
+            .testTag(BROCHURE_GRID)
             .semantics {
                 collectionInfo = CollectionInfo(rowCount = -1, columnCount = columnCount)
             },
@@ -265,7 +272,7 @@ private fun BrochureList(
             ) {
                 BrochureItem(
                     modifier = Modifier
-                        .testTag("brochure_item")
+                        .testTag(BROCHURE_ITEM)
                         .clip(MaterialTheme.shapes.large)
                         .background(MaterialTheme.colorScheme.surfaceVariant)
                         .animateItem(),
@@ -323,7 +330,7 @@ private fun BrochureItem(
             failure = {
                 Icon(
                     modifier = Modifier
-                        .testTag("brochure_broken_image")
+                        .testTag(BROCHURE_BROKEN_IMAGE)
                         .requiredSize(48.dp),
                     imageVector = Icons.Default.BrokenImage,
                     contentDescription = null

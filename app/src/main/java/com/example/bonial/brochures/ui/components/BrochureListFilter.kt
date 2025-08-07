@@ -30,6 +30,10 @@ import androidx.compose.ui.unit.dp
 import com.example.bonial.R
 import com.example.bonial.brochures.ui.BrochureApplyFilters
 import com.example.bonial.brochures.ui.Filters
+import com.example.bonial.core.TestTags.FILTERS
+import com.example.bonial.core.TestTags.FILTERS_APPLY
+import com.example.bonial.core.TestTags.FILTERS_CLOSE
+import com.example.bonial.core.TestTags.FILTERS_RESET
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
@@ -45,7 +49,7 @@ internal fun BrochureListFilter(
     coroutineScope: CoroutineScope = rememberCoroutineScope()
 ) {
     ModalBottomSheet(
-        modifier = modifier.testTag("filters"),
+        modifier = modifier.testTag(FILTERS),
         sheetState = sheetState,
         onDismissRequest = onDismissRequest,
     ) {
@@ -97,7 +101,7 @@ private fun BrochureListFilterContent(
             )
 
             TextButton(
-                modifier = Modifier.testTag("close_filters"),
+                modifier = Modifier.testTag(FILTERS_CLOSE),
                 onClick = hideBottomSheet
             ) {
                 Text(text = stringResource(R.string.action_cancel))
@@ -125,7 +129,7 @@ private fun BrochureListFilterContent(
             horizontalArrangement = Arrangement.End
         ) {
             OutlinedButton(
-                modifier = Modifier.testTag("reset_filters"),
+                modifier = Modifier.testTag(FILTERS_RESET),
                 onClick = {
                     onResetFiltersClicked()
                     hideBottomSheet()
@@ -136,7 +140,7 @@ private fun BrochureListFilterContent(
             Spacer(Modifier.width(10.dp))
 
             Button(
-                modifier = Modifier.testTag("apply_filters"),
+                modifier = Modifier.testTag(FILTERS_APPLY),
                 onClick = {
                     onApplyFiltersClicked(BrochureApplyFilters(distance = sliderState.value.toDouble()))
                     hideBottomSheet()

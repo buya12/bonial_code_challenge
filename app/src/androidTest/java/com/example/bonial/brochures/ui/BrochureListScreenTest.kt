@@ -19,6 +19,15 @@ import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
+import com.example.bonial.core.TestTags.BROCHURE_BROKEN_IMAGE
+import com.example.bonial.core.TestTags.BROCHURE_GRID
+import com.example.bonial.core.TestTags.BROCHURE_ITEM
+import com.example.bonial.core.TestTags.BROCHURE_LIST_EMPTY
+import com.example.bonial.core.TestTags.BROCHURE_LIST_ERROR
+import com.example.bonial.core.TestTags.BROCHURE_LIST_FILTER_BUTTON
+import com.example.bonial.core.TestTags.BROCHURE_LIST_LOADING
+import com.example.bonial.core.TestTags.FILTERS
+import com.example.bonial.core.TestTags.FILTERS_CLOSE
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
 import org.junit.Rule
@@ -92,7 +101,7 @@ class BrochureListScreenTest {
 
         testStateFlow.value = BrochureListState(loading = true)
 
-        composeTestRule.onNodeWithTag("loading")
+        composeTestRule.onNodeWithTag(BROCHURE_LIST_LOADING)
             .assertIsDisplayed()
     }
 
@@ -102,7 +111,7 @@ class BrochureListScreenTest {
 
         testStateFlow.value = BrochureListState(loading = false, error = true)
 
-        composeTestRule.onNodeWithTag("error")
+        composeTestRule.onNodeWithTag(BROCHURE_LIST_ERROR)
             .assertIsDisplayed()
     }
 
@@ -112,7 +121,7 @@ class BrochureListScreenTest {
 
         testStateFlow.value = BrochureListState(brochures = emptyList())
 
-        composeTestRule.onNodeWithTag("empty")
+        composeTestRule.onNodeWithTag(BROCHURE_LIST_EMPTY)
             .assertIsDisplayed()
     }
 
@@ -135,8 +144,8 @@ class BrochureListScreenTest {
         testStateFlow.value = BrochureListState(brochures = listOf(brochureWithNoImage))
 
         composeTestRule.onNode(
-            hasTestTag("brochure_item") and hasAnyDescendant(hasText(brochureWithNoImage.publisherName))
-                    and hasAnyDescendant(hasTestTag("brochure_broken_image"))
+            hasTestTag(BROCHURE_ITEM) and hasAnyDescendant(hasText(brochureWithNoImage.publisherName))
+                    and hasAnyDescendant(hasTestTag(BROCHURE_BROKEN_IMAGE))
         )
             .assertIsDisplayed()
     }
@@ -145,16 +154,16 @@ class BrochureListScreenTest {
     fun clicking_filter_button_displays_and_dismisses_filter_panel() {
         composeTestRule.setContent { TestScreen() }
 
-        composeTestRule.onNodeWithTag("filter_button")
+        composeTestRule.onNodeWithTag(BROCHURE_LIST_FILTER_BUTTON)
             .performClick()
 
-        composeTestRule.onNodeWithTag("filters")
+        composeTestRule.onNodeWithTag(FILTERS)
             .assertIsDisplayed()
 
-        composeTestRule.onNodeWithTag("close_filters")
+        composeTestRule.onNodeWithTag(FILTERS_CLOSE)
             .performClick()
 
-        composeTestRule.onNodeWithTag("filter_panel")
+        composeTestRule.onNodeWithTag(FILTERS)
             .assertDoesNotExist()
     }
 
@@ -170,7 +179,7 @@ class BrochureListScreenTest {
 
         testStateFlow.value = BrochureListState(brochures = testBrochureItemList)
 
-        composeTestRule.onNodeWithTag("brochure_grid")
+        composeTestRule.onNodeWithTag(BROCHURE_GRID)
             .assert(SemanticsMatcher("has 2 columns") {
                 with(it.config[SemanticsProperties.CollectionInfo]) {
                     columnCount == 2
@@ -190,7 +199,7 @@ class BrochureListScreenTest {
 
         testStateFlow.value = BrochureListState(brochures = testBrochureItemList)
 
-        composeTestRule.onNodeWithTag("brochure_grid")
+        composeTestRule.onNodeWithTag(BROCHURE_GRID)
             .assert(SemanticsMatcher("has 3 columns") {
                 with(it.config[SemanticsProperties.CollectionInfo]) {
                     columnCount == 3
