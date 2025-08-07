@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name" translatable="false">Bonial Code Challenge</string>
+
+    <string name="error_default">Oops! Something went wrong.</string>
+
+    <string name="action_retry">Retry</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="action_reset">Reset</string>
+    <string name="action_apply">Apply</string>
+
+    <string name="feature_work_in_progress">This feature is not available yet</string>
+
+    <string name="brochure_list_no_data">No brochures found nearby.</string>
+    <string name="brochure_list_distance">%.2f km away</string>
+    <string name="brochure_list_search_hint">Search for products, retailers &amp; more</string>
+
+    <string name="filters_title">Filters</string>
+    <string name="filters_distance">Distance: %.0f km</string>
+</resources>

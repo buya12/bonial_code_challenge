@@ -1,0 +1,17 @@
+<resources>
+    <string name="error_default">Hoppla! Etwas ist schiefgelaufen.</string>
+
+    <string name="action_retry">Erneut versuchen</string>
+    <string name="action_cancel">Abbrechen</string>
+    <string name="action_reset">Zurücksetzen</string>
+    <string name="action_apply">Anwenden</string>
+
+    <string name="feature_work_in_progress">Diese Funktion ist noch nicht verfügbar</string>
+
+    <string name="brochure_list_no_data">Keine Prospekte in deiner Nähe gefunden.</string>
+    <string name="brochure_list_distance">%.2f km entfernt</string>
+    <string name="brochure_list_search_hint">Suche nach Produkten, Händler &amp; mehr</string>
+
+    <string name="filters_title">Filter</string>
+    <string name="filters_distance">Entfernung: %1$d km</string>
+</resources>
