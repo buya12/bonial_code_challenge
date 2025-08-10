@@ -103,7 +103,7 @@ While the current version fulfills the core requirements, here are some features
 
 ## How to Run
 
-1.  **Clone the repository**: `git clone <repository-url>`
+1.  **Clone the repository**: `git clone https://github.com/buya12/bonial_code_challenge`
 2.  **Open in Android Studio**: Import the project into Android Studio (latest stable version recommended).
 3.  **Run**: Build and run the application on an Android emulator or a physical device (minimum API level 24+).
 
